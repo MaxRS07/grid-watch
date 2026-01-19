@@ -1,0 +1,131 @@
+.match-history {
+  background: var(--background);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.match-history h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.match-item:last-child {
+  margin-bottom: 0;
+}
+
+.match-item:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  transform: translateX(4px);
+}
+
+.match-result {
+  width: 80px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-right: 1rem;
+}
+
+.match-result.win {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.match-result.loss {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.match-details {
+  flex: 1;
+}
+
+.match-map {
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.match-score {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.match-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.match-kda {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.match-date {
+  font-size: 0.875rem;
+  color: #999;
+}
+
+@media (prefers-color-scheme: dark) {
+  .match-history {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .match-item {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .match-item:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .match-result.win {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+
+  .match-result.loss {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+
+  .match-score {
+    color: #a1a1a1;
+  }
+
+  .match-date {
+    color: #666;
+  }
+}
+
+@media (max-width: 640px) {
+  .match-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .match-result {
+    margin-right: 0;
+  }
+
+  .match-stats {
+    flex-wrap: wrap;
+  }
+}

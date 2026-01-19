@@ -1,0 +1,138 @@
+.tournament-card {
+  background: var(--background);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tournament-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tournament-card:hover {
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+  transform: translateX(4px);
+}
+
+.tournament-card:hover::before {
+  opacity: 1;
+}
+
+.tournament-card-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.tournament-icon {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.tournament-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tournament-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 0.25rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tournament-card-subtitle {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tournament-card-arrow {
+  width: 24px;
+  height: 24px;
+  color: #999;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.tournament-card:hover .tournament-card-arrow {
+  color: #667eea;
+  transform: translateX(4px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tournament-card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .tournament-card:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 16px -4px rgba(102, 126, 234, 0.2);
+  }
+
+  .tournament-card-subtitle {
+    color: #a1a1a1;
+  }
+
+  .tournament-card-arrow {
+    color: #666;
+  }
+
+  .tournament-card:hover .tournament-card-arrow {
+    color: #a5b4fc;
+  }
+}
+
+@media (max-width: 640px) {
+  .tournament-card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .tournament-card-badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tournament-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tournament-card-title {
+    font-size: 1rem;
+  }
+
+  .tournament-card-subtitle {
+    font-size: 0.8125rem;
+  }
+}

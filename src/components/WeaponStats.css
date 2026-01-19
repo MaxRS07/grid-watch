@@ -1,0 +1,90 @@
+.weapon-stats {
+  background: var(--background);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.weapon-stats h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.weapon-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.weapon-item:last-child {
+  margin-bottom: 0;
+}
+
+.weapon-name {
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.weapon-kills {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.weapon-metrics {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.weapon-metric {
+  text-align: center;
+}
+
+.weapon-metric-label {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 0.25rem;
+}
+
+.weapon-metric-value {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  .weapon-stats {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .weapon-item {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .weapon-kills {
+    color: #a1a1a1;
+  }
+
+  .weapon-metric-label {
+    color: #666;
+  }
+}
+
+@media (max-width: 640px) {
+  .weapon-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .weapon-metrics {
+    width: 100%;
+    justify-content: space-around;
+  }
+}

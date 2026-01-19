@@ -1,0 +1,125 @@
+.analytics-card {
+  background: var(--background);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.analytics-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+}
+
+.analytics-chart {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.analytics-bar {
+  flex: 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.analytics-bar:hover {
+  opacity: 0.8;
+  transform: translateY(-4px);
+}
+
+.analytics-bar-label {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.analytics-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.analytics-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.analytics-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.analytics-legend-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.analytics-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.analytics-stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 6px;
+}
+
+.analytics-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 0.25rem;
+}
+
+.analytics-stat-label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .analytics-card {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .analytics-bar-label {
+    color: #a1a1a1;
+  }
+
+  .analytics-legend-label {
+    color: #a1a1a1;
+  }
+
+  .analytics-stat-item {
+    background: rgba(102, 126, 234, 0.1);
+  }
+
+  .analytics-stat-value {
+    color: #a5b4fc;
+  }
+
+  .analytics-stat-label {
+    color: #a1a1a1;
+  }
+}
+
+@media (max-width: 640px) {
+  .analytics-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
