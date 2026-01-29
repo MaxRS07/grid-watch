@@ -21,6 +21,7 @@ function PlayerLayoutContent({ children }: { children: ReactNode }) {
     { label: '3M', value: '3_MONTHS' as const },
     { label: '6M', value: '6_MONTHS' as const },
     { label: '1Y', value: 'YEAR' as const },
+    { label: 'ALL', value: 'ALL' as const },
   ];
   const navigateToStats = () => {
     router.push(`/player/${playerId}/stats`);
@@ -60,6 +61,9 @@ function PlayerLayoutContent({ children }: { children: ReactNode }) {
           </button>
           <h1 className='text-3xl'>
             {player ? player.name : 'Loading...'}
+          </h1>
+          <h1 className='text-xl mt-1'>
+            {player ? player.title.name : ''}
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400">
             ID: {playerId}

@@ -69,7 +69,7 @@ export function TeamDataProvider({
                 setTeam(teamData);
                 setTeamPlayers(playersData);
                 setTeamStats(statsData);
-                setTeamSeries(series);
+                setTeamSeries(series.data);
             })
             .catch((err) => {
                 console.error('Error fetching team data:', err);

@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import SearchBar from '@/components/SearchBar';
 import ResultCard from '@/components/ResultCard';
 import { Player } from '@/data/allData';
 import { fetchPlayers, searchPlayersByNickname } from '@/lib/grid/players';
-import { useRouter } from 'next/navigation';
 
 export default function PlayersPage() {
+  const router = useRouter();
   const [allPlayers, setAllPlayers] = useState<Player[]>([]);
   const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
@@ -15,8 +16,6 @@ export default function PlayersPage() {
   const [hasNextPage, setHasNextPage] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-
-  const router = useRouter();
 
   // Fetch players from API
   useEffect(() => {
@@ -60,7 +59,7 @@ export default function PlayersPage() {
       // If search is empty, show all players
       const filtered = allPlayers.filter((player) => {
         const matchesFilter =
-          filter === 'all' || player.title.toLowerCase() === filter.toLowerCase();
+          filter === 'all' || player.name.toLowerCase() === filter.toLowerCase();
         return matchesFilter;
       });
       setFilteredPlayers(filtered);
@@ -75,7 +74,7 @@ export default function PlayersPage() {
       // Apply title filter if needed
       const filtered = searchedPlayers.filter((player) => {
         const matchesFilter =
-          filter === 'all' || player.title.toLowerCase() === filter.toLowerCase();
+          filter === 'all' || player.name.toLowerCase() === filter.toLowerCase();
         return matchesFilter;
       });
 
@@ -86,7 +85,7 @@ export default function PlayersPage() {
       const filtered = allPlayers.filter((player) => {
         const matchesQuery = player.name.toLowerCase().includes(lowerQuery);
         const matchesFilter =
-          filter === 'all' || player.title.toLowerCase() === filter.toLowerCase();
+          filter === 'all' || player.name.toLowerCase() === filter.toLowerCase();
         return matchesQuery && matchesFilter;
       });
       setFilteredPlayers(filtered);
@@ -99,13 +98,14 @@ export default function PlayersPage() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <h1 className="mb-6 text-3xl font-semibold text-black dark:text-zinc-50">
+        <h1 className="text-3xl font-semibold text-black dark:text-zinc-50 mb-6">
           Top Players
         </h1>
 
         <SearchBar
           placeholder="Search players..."
           onSearch={(query) => handleSearch(query, 'all')}
+          onSelect={(option) => handleRouting(option.id)}
           results={filteredPlayers}
         />
 
@@ -115,7 +115,8 @@ export default function PlayersPage() {
               key={player.id}
               id={player.id}
               name={player.name}
-              title={player.title}
+              title={player.title.name}
+              team={player.team}
               onClick={handleRouting}
             />
           ))}

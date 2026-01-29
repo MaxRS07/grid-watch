@@ -13,6 +13,7 @@ function SeriesLayoutContent({ children }: { children: ReactNode }) {
 
     const isStatsActive = pathname?.includes('/stats');
     const isAnalysisActive = pathname?.includes('/analysis');
+    const isTimelineActive = pathname?.includes('/timeline');
 
     const navigateToStats = () => {
         router.push(`/series/${seriesId}/stats`);
@@ -21,6 +22,10 @@ function SeriesLayoutContent({ children }: { children: ReactNode }) {
     const navigateToAnalysis = () => {
         router.push(`/series/${seriesId}/analysis`);
     };
+
+    const navigateToTimeline = () => {
+        router.push(`/series/${seriesId}/timeline`);
+    }
 
     return (
         <div className="min-h-screen bg-zinc-50 dark:bg-black">
@@ -47,7 +52,7 @@ function SeriesLayoutContent({ children }: { children: ReactNode }) {
                         Back to Matches
                     </button>
                     <h1 className='text-3xl'>
-                        {series ? series.name.toUpperCase() + " " + series.tournamentName : 'Loading...'}
+                        {series ? series.title.name + " " + series.tournamentName : 'Loading...'}
                     </h1>
                     <p className="text-zinc-600 dark:text-zinc-400">
                         Format: {seriesStats?.format || 'N/A'} • Status: {seriesStats?.finished ? 'Finished' : seriesStats?.started ? 'Live' : 'Scheduled'} • ID: {seriesId}
@@ -74,6 +79,15 @@ function SeriesLayoutContent({ children }: { children: ReactNode }) {
                                 }`}
                         >
                             Analysis
+                        </button>
+                        <button
+                            onClick={navigateToTimeline}
+                            className={`pb-4 px-1 border-b-2 font-medium transition-colors ${isTimelineActive
+                                ? 'border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400'
+                                : 'border-transparent text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700'
+                                }`}
+                        >
+                            Timeline
                         </button>
                     </div>
                 </div>

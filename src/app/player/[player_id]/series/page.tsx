@@ -4,45 +4,20 @@ import { usePlayerData } from '../PlayerDataContext';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Series } from '@/data/allData';
-import { fetchSeriesWithFilters } from '@/lib/grid/series';
 
 export default function PlayerSeriesPage() {
-    const { player, loading, error, timeWindow } = usePlayerData();
-    const [playerSeries, setPlayerSeries] = useState<Series[]>([]);
+    const { player, loading, error, timeWindow, playerSeries, seriesLoading } = usePlayerData();
     const [filteredSeries, setFilteredSeries] = useState<Series[]>([]);
-    const [seriesLoading, setSeriesLoading] = useState(false);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
-    const timeWindowMillis: Record<string, number> = {
-        'WEEK': 7 * 24 * 60 * 60 * 1000,
-        'MONTH': 30 * 24 * 60 * 60 * 1000,
-        '3_MONTHS': 90 * 24 * 60 * 60 * 1000,
-        '6_MONTHS': 180 * 24 * 60 * 60 * 1000,
-        'YEAR': 365 * 24 * 60 * 60 * 1000,
-        'ALL': 10 * 365 * 24 * 60 * 60 * 1000,
-    };
-
-    // Fetch series for this player
-    useEffect(() => {
-        if (!player?.id) return;
-
-        setSeriesLoading(true);
-        fetchSeriesWithFilters({
-            livePlayerIds: [player.id],
-            startDate: Date.now() - timeWindowMillis[timeWindow],
-            endDate: Date.now()
-        })
-            .then(series => {
-                setPlayerSeries(series);
-                setFilteredSeries(series);
-            })
-            .catch(err => console.error('Error fetching player series:', err))
-            .finally(() => setSeriesLoading(false));
-    }, [player?.id]);
-
     // Apply date filters
     useEffect(() => {
+        if (!playerSeries) {
+            setFilteredSeries([]);
+            return;
+        }
+
         let filtered = playerSeries;
 
         if (startDate) {
@@ -145,11 +120,11 @@ export default function PlayerSeriesPage() {
 
                         return (
                             <Link key={series.id} href={`/series/${series.id}`}>
-                                <div className="p-6 bg-gradient-to-br from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-zinc-950 cursor-pointer" style={{ marginBottom: '24px' }}>
+                                <div className="p-6 bg-linear-to-br from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500 transition-all hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-zinc-950 cursor-pointer" style={{ marginBottom: '24px' }}>
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="flex-1">
                                             <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition">
-                                                {series.name}
+                                                {series.title.name} - {series.tournamentName}
                                             </h3>
                                             <div className="flex items-center gap-2 text-sm">
                                                 <svg className="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

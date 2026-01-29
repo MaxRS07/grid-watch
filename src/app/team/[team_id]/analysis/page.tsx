@@ -107,7 +107,7 @@ export default function TeamAnalysisPage() {
                             className="p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg flex items-center justify-between"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+                                <div className="w-8 h-8 rounded-full bg-linear-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
                                     {idx + 1}
                                 </div>
                                 <div>

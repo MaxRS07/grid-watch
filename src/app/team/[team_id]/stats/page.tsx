@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useTeamData } from '../TeamDataContext';
 
 export default function TeamStatsPage() {
@@ -30,13 +31,13 @@ export default function TeamStatsPage() {
     }
 
     // Calculate aggregate wins statistics
-    const totalWins = teamStats.game.wins.reduce((sum, w) => sum + w.value, 0);
-    const totalWinGames = teamStats.game.wins.reduce((sum, w) => sum + w.count, 0);
-    const avgWinPercentage = teamStats.game.wins.length > 0
-        ? teamStats.game.wins.reduce((sum, w) => sum + w.percentage, 0) / teamStats.game.wins.length
-        : 0;
-    const bestStreak = Math.max(...teamStats.game.wins.map(w => w.streak.max), 0);
-    const worstStreak = Math.min(...teamStats.game.wins.map(w => w.streak.min), 0);
+    // wins array has 2 objects: one with value: true (wins), one with value: false (losses)
+    const lossesEntry = teamStats.game.wins[0];
+    const winsEntry = teamStats.game.wins[1];
+    const totalWins = winsEntry.count;
+    const avgWinPercentage = winsEntry.percentage;
+    const bestStreak = winsEntry.streak.max;
+    const worstStreak = lossesEntry.streak.max;
 
     return (
         <>
@@ -72,56 +73,6 @@ export default function TeamStatsPage() {
                     </div>
                 </div>
             </div>
-
-            {/* Wins Breakdown */}
-            {teamStats.game.wins && teamStats.game.wins.length > 0 && (
-                <div className="mb-8 p-6 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800">
-                    <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-4">
-                        Wins Breakdown
-                    </h2>
-                    <div className="space-y-4">
-                        {teamStats.game.wins.map((win, idx) => (
-                            <div
-                                key={idx}
-                                className="p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg"
-                            >
-                                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                    <div>
-                                        <p className="text-sm text-zinc-600 dark:text-zinc-400">Wins</p>
-                                        <p className="text-lg font-semibold text-green-600 dark:text-green-400">
-                                            {win.value}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-zinc-600 dark:text-zinc-400">Games</p>
-                                        <p className="text-lg font-semibold text-zinc-900 dark:text-white">
-                                            {win.count}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-zinc-600 dark:text-zinc-400">Win Rate</p>
-                                        <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                                            {win.percentage.toFixed(1)}%
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-zinc-600 dark:text-zinc-400">Current Streak</p>
-                                        <p className="text-lg font-semibold text-purple-600 dark:text-purple-400">
-                                            {win.streak.current}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-zinc-600 dark:text-zinc-400">Best Streak</p>
-                                        <p className="text-lg font-semibold text-zinc-900 dark:text-white">
-                                            {win.streak.max}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
 
             {/* Series Stats */}
             {teamStats.series && (

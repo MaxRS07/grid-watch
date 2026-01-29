@@ -23,6 +23,7 @@ interface SearchBarProps {
   placeholder?: string;
   filters?: FilterOption[];
   onSearch?: (query: string) => void;
+  onSelect?: (result: SearchResult) => void;
   onFilterChange?: (filterId: string, value: string | string[] | number) => void;
   onReset?: () => void;
   results?: SearchResult[];
@@ -33,6 +34,7 @@ export default function SearchBar({
   placeholder = 'Search...',
   filters = [],
   onSearch,
+  onSelect,
   onFilterChange,
   onReset,
   results = [],
@@ -125,6 +127,7 @@ export default function SearchBar({
                   className="search-dropdown-item"
                   onClick={() => {
                     setQuery(result.name);
+                    onSelect?.(result);
                     setShowDropdown(false);
                   }}
                 >

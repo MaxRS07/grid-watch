@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import SearchBar, { FilterOption } from '@/components/SearchBar';
 import SeriesCard from '@/components/SeriesCard';
 import { Series, Team } from '@/data/allData';
-import { fetchSeriesWithFilters, SeriesFilter } from '@/lib/grid/series';
+import { fetchSeriesWithFilters, SeriesProps } from '@/lib/grid/series';
 import { fetchTeamById } from '@/lib/grid/teams';
 
 export default function SeriesPage() {
@@ -33,7 +33,7 @@ export default function SeriesPage() {
     const router = useRouter();
 
     useEffect(() => {
-        const seriesFilters: SeriesFilter = {};
+        const seriesFilters: SeriesProps = {};
 
         // Add start date if set
         const startDateFilter = filters.find(f => f.id === 'startDate');

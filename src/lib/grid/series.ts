@@ -1,7 +1,17 @@
 import { Series } from "@/data/allData";
 import { getCachedData } from "@/lib/cache";
-
-export interface SeriesFilter {
+export interface SeriesResponse {
+    data: Series[];
+    pageInfo: {
+        hasNextPage: boolean;
+        endCursor: string | null;
+        hasPreviousPage: boolean;
+        startCursor: string | null;
+    };
+}
+export interface SeriesProps {
+    first?: number;
+    after?: string | null;
     live?: boolean;
     teamId?: string;
     titleId?: string;
@@ -16,13 +26,23 @@ export interface SeriesFilter {
 }
 
 /**
- * Fetch series with advanced filtering
+ * Fetch series with advanced filtering and pagination
  */
 export async function fetchSeriesWithFilters(
-    filters: SeriesFilter
-): Promise<Series[]> {
+    filters: SeriesProps
+): Promise<SeriesResponse> {
     const params = new URLSearchParams();
 
+    // Pagination parameters
+    if (filters.first) {
+        params.append("first", filters.first.toString());
+    }
+
+    if (filters.after) {
+        params.append("after", filters.after);
+    }
+
+    // Filter parameters
     if (filters.live !== undefined) {
         params.append("live", filters.live.toString());
     }
@@ -94,23 +114,11 @@ export async function fetchSeriesWithFilters(
 export async function fetchSeries(
     first: number = 50,
     after: string | null = null
-): Promise<Series[]> {
-    const params = new URLSearchParams({
-        first: first.toString(),
+): Promise<SeriesResponse> {
+    return fetchSeriesWithFilters({
+        first,
+        after,
     });
-
-    if (after) {
-        params.append("after", after);
-    }
-
-    const res = await fetch(`/api/series?${params.toString()}`);
-
-    if (!res.ok) {
-        const text = await res.text();
-        throw new Error(`Backend API error: ${res.status} - ${text}`);
-    }
-
-    return res.json();
 }
 
 /**

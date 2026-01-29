@@ -58,12 +58,12 @@ export async function getCachedData<T>(
     // Check cache first
     const cached = appCache.get<T>(key);
     if (cached !== null) {
-        console.log(`Cache hit for key: ${key}`);
+        // console.log(`Cache hit for key: ${key}`);
         return cached;
     }
 
     // Fetch fresh data
-    console.log(`Cache miss for key: ${key}, fetching...`);
+    // console.log(`Cache miss for key: ${key}, fetching...`);
     const data = await fetcher();
 
     // Store in cache

@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import SearchBar, { FilterOption } from '@/components/SearchBar';
 import TeamCard from '@/components/TeamCard';
 import { Team } from '@/data/allData';
 import { fetchTeams, searchTeamsByName } from '@/lib/grid/teams';
 
 export default function TeamsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [allTeams, setAllTeams] = useState<Team[]>([]);
   const [filteredTeams, setFilteredTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,29 @@ export default function TeamsPage() {
   const [hasNextPage, setHasNextPage] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const router = useRouter();
+  const [timeWindow, setTimeWindowState] = useState<'WEEK' | 'MONTH' | '3_MONTHS' | '6_MONTHS' | 'YEAR' | 'ALL'>('3_MONTHS');
+
+  const timeWindowOptions = [
+    { label: '1W', value: 'WEEK' as const },
+    { label: '1M', value: 'MONTH' as const },
+    { label: '3M', value: '3_MONTHS' as const },
+    { label: '6M', value: '6_MONTHS' as const },
+    { label: '1Y', value: 'YEAR' as const },
+    { label: 'ALL', value: 'ALL' as const },
+  ];
+
+  // Initialize time window from URL params
+  useEffect(() => {
+    const urlTimeWindow = searchParams.get('timeWindow') as 'WEEK' | 'MONTH' | '3_MONTHS' | '6_MONTHS' | 'YEAR' | 'ALL' | null;
+    if (urlTimeWindow && ['WEEK', 'MONTH', '3_MONTHS', '6_MONTHS', 'YEAR', 'ALL'].includes(urlTimeWindow)) {
+      setTimeWindowState(urlTimeWindow);
+    }
+  }, []);
+
+  const setTimeWindow = (value: 'WEEK' | 'MONTH' | '3_MONTHS' | '6_MONTHS' | 'YEAR' | 'ALL') => {
+    setTimeWindowState(value);
+    router.push(`/teams?timeWindow=${value}`);
+  };
 
   // Initialize filters
   useEffect(() => {
@@ -119,9 +143,27 @@ export default function TeamsPage() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <h1 className="mb-6 text-3xl font-semibold text-black dark:text-zinc-50">
-          Teams
-        </h1>
+        <div className="flex justify-between items-start mb-6">
+          <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">
+            Teams
+          </h1>
+
+          {/* Time Window Selector */}
+          <div className="flex gap-2">
+            {timeWindowOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => setTimeWindow(option.value)}
+                className={`px-3 py-1 text-sm font-medium rounded transition-colors ${timeWindow === option.value
+                    ? 'bg-blue-600 text-white dark:bg-blue-500'
+                    : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-700'
+                  }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <SearchBar
           placeholder="Search teams by name..."

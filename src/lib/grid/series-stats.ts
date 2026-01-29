@@ -17,8 +17,6 @@ export async function fetchSeriesStats(seriesId: string): Promise<SeriesState> {
 
             const root: SeriesState = await res.json();
 
-            console.log('Fetched series stats from API:', root);
-
             return root;
         },
         10 * 60 * 1000 // Cache for 10 minutes

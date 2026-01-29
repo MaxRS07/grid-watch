@@ -45,6 +45,30 @@
   margin-bottom: 0.25rem;
 }
 
+.result-card-details {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.result-card-title {
+  display: inline-block;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.result-card-team {
+  display: inline-block;
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
 .result-card-rank {
   display: inline-block;
   background: rgba(102, 126, 234, 0.1);
@@ -102,6 +126,15 @@
   .result-card-rank {
     background: rgba(102, 126, 234, 0.2);
     color: #a5b4fc;
+  }
+
+  .result-card-title {
+    background: rgba(102, 126, 234, 0.2);
+    color: #a5b4fc;
+  }
+
+  .result-card-team {
+    color: #a1a1a1;
   }
 
   .result-card-stat-label {

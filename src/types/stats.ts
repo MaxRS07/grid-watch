@@ -4,7 +4,7 @@ export type StatSeries = {
 };
 
 export type GameWins = {
-    value: number;
+    value: boolean;
     count: number;
     percentage: number;
     streak: { min: number; max: number; current: number };
