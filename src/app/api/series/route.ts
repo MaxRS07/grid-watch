@@ -183,6 +183,7 @@ export async function GET(req: NextRequest) {
                 })),
                 players: node.players,
                 streams: node.streams,
+                getName: () => node.tournament?.name + ' ' + node.title?.name,
             };
 
             return NextResponse.json(series);

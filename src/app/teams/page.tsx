@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import SearchBar, { FilterOption } from '@/components/SearchBar';
 import TeamCard from '@/components/TeamCard';
 import { Team } from '@/data/allData';
 import { fetchTeams, searchTeamsByName } from '@/lib/grid/teams';
 
-export default function TeamsPage() {
+function TeamsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [allTeams, setAllTeams] = useState<Team[]>([]);
@@ -155,8 +155,8 @@ export default function TeamsPage() {
                 key={option.value}
                 onClick={() => setTimeWindow(option.value)}
                 className={`px-3 py-1 text-sm font-medium rounded transition-colors ${timeWindow === option.value
-                    ? 'bg-blue-600 text-white dark:bg-blue-500'
-                    : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-700'
+                  ? 'bg-blue-600 text-white dark:bg-blue-500'
+                  : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-700'
                   }`}
               >
                 {option.label}
@@ -212,5 +212,19 @@ export default function TeamsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function TeamsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-zinc-50 dark:bg-black">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <p className="text-center mt-20">Loading teams...</p>
+        </div>
+      </div>
+    }>
+      <TeamsPageContent />
+    </Suspense>
   );
 }

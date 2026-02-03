@@ -120,7 +120,7 @@ export default function TeamSeriesPage() {
                                     <div className="flex items-start justify-between mb-4">
                                         <div className="flex-1">
                                             <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition">
-                                                {series.name.toUpperCase()} {series.tournamentName}
+                                                {series.getName()}
                                             </h3>
                                         </div>
                                         <div className="flex flex-col items-end gap-2">
