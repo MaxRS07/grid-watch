@@ -1,0 +1,1337 @@
+{
+    "type": "round",
+    "id": "round-4",
+    "stateDelta": {
+        "id": "round-4",
+        "type": "round",
+        "sequenceNumber": 4,
+        "finished": true
+    },
+    "state": {
+        "id": "round-4",
+        "statePath": [
+            {
+                "id": "round-4"
+            }
+        ],
+        "type": "round",
+        "sequenceNumber": 4,
+        "started": true,
+        "finished": true,
+        "startedAt": "2025-08-08T21:12:25.283Z",
+        "teams": [
+            {
+                "id": "79",
+                "statePath": [
+                    {
+                        "id": "79"
+                    }
+                ],
+                "name": "Cloud9",
+                "side": "defender",
+                "won": true,
+                "kills": 5,
+                "killAssistsReceived": 2,
+                "killAssistsGiven": 2,
+                "killAssistsReceivedFromPlayer": [
+                    {
+                        "id": "killAssistsReceivedFromPlayer-1195",
+                        "playerId": "1195",
+                        "killAssistsReceived": 1
+                    },
+                    {
+                        "id": "killAssistsReceivedFromPlayer-2348",
+                        "playerId": "2348",
+                        "killAssistsReceived": 1
+                    }
+                ],
+                "weaponKills": {
+                    "vandal": 2,
+                    "phantom": 2,
+                    "bulldog": 1
+                },
+                "teamkills": 0,
+                "teamkillAssistsReceived": 0,
+                "teamkillAssistsGiven": 0,
+                "teamkillAssistsReceivedFromPlayer": [],
+                "weaponTeamkills": {},
+                "selfkills": 0,
+                "deaths": 2,
+                "firstKill": true,
+                "objectives": [
+                    {
+                        "id": "captureUltimateOrb",
+                        "statePath": [
+                            {
+                                "id": "captureUltimateOrb"
+                            }
+                        ],
+                        "type": "captureUltimateOrb",
+                        "completionCount": 1,
+                        "completedFirst": false
+                    },
+                    {
+                        "id": "beginDefuseBomb",
+                        "statePath": [
+                            {
+                                "id": "beginDefuseBomb"
+                            }
+                        ],
+                        "type": "beginDefuseBomb",
+                        "completionCount": 3,
+                        "completedFirst": true
+                    },
+                    {
+                        "id": "stopDefuseBomb",
+                        "statePath": [
+                            {
+                                "id": "stopDefuseBomb"
+                            }
+                        ],
+                        "type": "stopDefuseBomb",
+                        "completionCount": 3,
+                        "completedFirst": true
+                    },
+                    {
+                        "id": "reachDefuseBombCheckpoint",
+                        "statePath": [
+                            {
+                                "id": "reachDefuseBombCheckpoint"
+                            }
+                        ],
+                        "type": "reachDefuseBombCheckpoint",
+                        "completionCount": 1,
+                        "completedFirst": true
+                    },
+                    {
+                        "id": "defuseBomb",
+                        "statePath": [
+                            {
+                                "id": "defuseBomb"
+                            }
+                        ],
+                        "type": "defuseBomb",
+                        "completionCount": 1,
+                        "completedFirst": true
+                    }
+                ],
+                "damageDealtSources": [
+                    {
+                        "id": "damageDealtSource-vandal",
+                        "source": {
+                            "name": "vandal"
+                        },
+                        "damageAmount": 94,
+                        "occurrenceCount": 3,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 94,
+                                "occurrenceCount": 3
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtSource-phantom",
+                        "source": {
+                            "name": "phantom"
+                        },
+                        "damageAmount": 380,
+                        "occurrenceCount": 9,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 380,
+                                "occurrenceCount": 9
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtSource-snake-bite",
+                        "source": {
+                            "name": "snake-bite"
+                        },
+                        "damageAmount": 24,
+                        "occurrenceCount": 12,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 24,
+                                "occurrenceCount": 12
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtSource-bulldog",
+                        "source": {
+                            "name": "bulldog"
+                        },
+                        "damageAmount": 125,
+                        "occurrenceCount": 3,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 125,
+                                "occurrenceCount": 3
+                            }
+                        ]
+                    }
+                ],
+                "damageDealtTargets": [
+                    {
+                        "id": "damageDealtTarget-body",
+                        "target": {
+                            "name": "body"
+                        },
+                        "damageAmount": 373,
+                        "occurrenceCount": 11,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 373,
+                                "occurrenceCount": 11
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtTarget-general",
+                        "target": {
+                            "name": "general"
+                        },
+                        "damageAmount": 24,
+                        "occurrenceCount": 12,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 24,
+                                "occurrenceCount": 12
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtTarget-head",
+                        "target": {
+                            "name": "head"
+                        },
+                        "damageAmount": 226,
+                        "occurrenceCount": 4,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 226,
+                                "occurrenceCount": 4
+                            }
+                        ]
+                    }
+                ],
+                "players": [
+                    {
+                        "id": "10612",
+                        "statePath": [
+                            {
+                                "id": "10612"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "v1c",
+                        "participationStatus": "active",
+                        "kills": 2,
+                        "killAssistsReceived": 2,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [
+                            {
+                                "id": "killAssistsReceivedFromPlayer-1195",
+                                "playerId": "1195",
+                                "killAssistsReceived": 1
+                            },
+                            {
+                                "id": "killAssistsReceivedFromPlayer-2348",
+                                "playerId": "2348",
+                                "killAssistsReceived": 1
+                            }
+                        ],
+                        "weaponKills": {
+                            "vandal": 2
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 0,
+                        "firstKill": true,
+                        "objectives": [
+                            {
+                                "id": "beginDefuseBomb",
+                                "statePath": [
+                                    {
+                                        "id": "beginDefuseBomb"
+                                    }
+                                ],
+                                "type": "beginDefuseBomb",
+                                "completionCount": 1,
+                                "completedFirst": false
+                            },
+                            {
+                                "id": "reachDefuseBombCheckpoint",
+                                "statePath": [
+                                    {
+                                        "id": "reachDefuseBombCheckpoint"
+                                    }
+                                ],
+                                "type": "reachDefuseBombCheckpoint",
+                                "completionCount": 1,
+                                "completedFirst": true
+                            },
+                            {
+                                "id": "stopDefuseBomb",
+                                "statePath": [
+                                    {
+                                        "id": "stopDefuseBomb"
+                                    }
+                                ],
+                                "type": "stopDefuseBomb",
+                                "completionCount": 1,
+                                "completedFirst": false
+                            }
+                        ],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-vandal",
+                                "source": {
+                                    "name": "vandal"
+                                },
+                                "damageAmount": 94,
+                                "occurrenceCount": 3,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 94,
+                                        "occurrenceCount": 3
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 47,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 47,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtTarget-head",
+                                "target": {
+                                    "name": "head"
+                                },
+                                "damageAmount": 47,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 47,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": true,
+                        "currentArmor": 25,
+                        "currentHealth": 100,
+                        "damageDealt": 94,
+                        "damageTaken": 0,
+                        "headshots": 1,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "10636",
+                        "statePath": [
+                            {
+                                "id": "10636"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "OXY",
+                        "participationStatus": "active",
+                        "kills": 1,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {
+                            "bulldog": 1
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 0,
+                        "firstKill": false,
+                        "objectives": [
+                            {
+                                "id": "beginDefuseBomb",
+                                "statePath": [
+                                    {
+                                        "id": "beginDefuseBomb"
+                                    }
+                                ],
+                                "type": "beginDefuseBomb",
+                                "completionCount": 2,
+                                "completedFirst": true
+                            },
+                            {
+                                "id": "stopDefuseBomb",
+                                "statePath": [
+                                    {
+                                        "id": "stopDefuseBomb"
+                                    }
+                                ],
+                                "type": "stopDefuseBomb",
+                                "completionCount": 2,
+                                "completedFirst": true
+                            },
+                            {
+                                "id": "defuseBomb",
+                                "statePath": [
+                                    {
+                                        "id": "defuseBomb"
+                                    }
+                                ],
+                                "type": "defuseBomb",
+                                "completionCount": 1,
+                                "completedFirst": true
+                            }
+                        ],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-bulldog",
+                                "source": {
+                                    "name": "bulldog"
+                                },
+                                "damageAmount": 125,
+                                "occurrenceCount": 3,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 125,
+                                        "occurrenceCount": 3
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 70,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 70,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtTarget-head",
+                                "target": {
+                                    "name": "head"
+                                },
+                                "damageAmount": 55,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 55,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": true,
+                        "currentArmor": 25,
+                        "currentHealth": 100,
+                        "damageDealt": 125,
+                        "damageTaken": 0,
+                        "headshots": 1,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "1195",
+                        "statePath": [
+                            {
+                                "id": "1195"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "mitch",
+                        "participationStatus": "active",
+                        "kills": 1,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 1,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {
+                            "phantom": 1
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 0,
+                        "firstKill": false,
+                        "objectives": [
+                            {
+                                "id": "captureUltimateOrb",
+                                "statePath": [
+                                    {
+                                        "id": "captureUltimateOrb"
+                                    }
+                                ],
+                                "type": "captureUltimateOrb",
+                                "completionCount": 1,
+                                "completedFirst": false
+                            }
+                        ],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-phantom",
+                                "source": {
+                                    "name": "phantom"
+                                },
+                                "damageAmount": 202,
+                                "occurrenceCount": 4,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 202,
+                                        "occurrenceCount": 4
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 78,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 78,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtTarget-head",
+                                "target": {
+                                    "name": "head"
+                                },
+                                "damageAmount": 124,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 124,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": true,
+                        "currentArmor": 17,
+                        "currentHealth": 70,
+                        "damageDealt": 202,
+                        "damageTaken": 55,
+                        "headshots": 2,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "1193",
+                        "statePath": [
+                            {
+                                "id": "1193"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "Xeppaa",
+                        "participationStatus": "active",
+                        "kills": 0,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {},
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [],
+                        "damageDealtSources": [],
+                        "damageDealtTargets": [],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 0,
+                        "damageTaken": 125,
+                        "headshots": 0,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "2348",
+                        "statePath": [
+                            {
+                                "id": "2348"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "neT",
+                        "participationStatus": "active",
+                        "kills": 1,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 1,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {
+                            "phantom": 1
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-snake-bite",
+                                "source": {
+                                    "name": "snake-bite"
+                                },
+                                "damageAmount": 24,
+                                "occurrenceCount": 12,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 24,
+                                        "occurrenceCount": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtSource-phantom",
+                                "source": {
+                                    "name": "phantom"
+                                },
+                                "damageAmount": 178,
+                                "occurrenceCount": 5,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 178,
+                                        "occurrenceCount": 5
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-general",
+                                "target": {
+                                    "name": "general"
+                                },
+                                "damageAmount": 24,
+                                "occurrenceCount": 12,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 24,
+                                        "occurrenceCount": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 178,
+                                "occurrenceCount": 5,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 178,
+                                        "occurrenceCount": 5
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 202,
+                        "damageTaken": 125,
+                        "headshots": 0,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    }
+                ],
+                "damageDealt": 623,
+                "damageTaken": 305,
+                "headshots": 4,
+                "selfdamageDealt": 0,
+                "selfdamageTaken": 0,
+                "teamHeadshots": 0,
+                "teamdamageDealt": 0,
+                "teamdamageTaken": 0,
+                "winType": "bombDefused"
+            },
+            {
+                "id": "53367",
+                "statePath": [
+                    {
+                        "id": "53367"
+                    }
+                ],
+                "name": "2GAME eSports",
+                "side": "attacker",
+                "won": false,
+                "kills": 2,
+                "killAssistsReceived": 2,
+                "killAssistsGiven": 2,
+                "killAssistsReceivedFromPlayer": [
+                    {
+                        "id": "killAssistsReceivedFromPlayer-32032",
+                        "playerId": "32032",
+                        "killAssistsReceived": 1
+                    },
+                    {
+                        "id": "killAssistsReceivedFromPlayer-32033",
+                        "playerId": "32033",
+                        "killAssistsReceived": 1
+                    }
+                ],
+                "weaponKills": {
+                    "sheriff": 2
+                },
+                "teamkills": 0,
+                "teamkillAssistsReceived": 0,
+                "teamkillAssistsGiven": 0,
+                "teamkillAssistsReceivedFromPlayer": [],
+                "weaponTeamkills": {},
+                "selfkills": 0,
+                "deaths": 5,
+                "firstKill": false,
+                "objectives": [
+                    {
+                        "id": "captureUltimateOrb",
+                        "statePath": [
+                            {
+                                "id": "captureUltimateOrb"
+                            }
+                        ],
+                        "type": "captureUltimateOrb",
+                        "completionCount": 1,
+                        "completedFirst": true
+                    },
+                    {
+                        "id": "plantBomb",
+                        "statePath": [
+                            {
+                                "id": "plantBomb"
+                            }
+                        ],
+                        "type": "plantBomb",
+                        "completionCount": 1,
+                        "completedFirst": true
+                    }
+                ],
+                "damageDealtSources": [
+                    {
+                        "id": "damageDealtSource-sheriff",
+                        "source": {
+                            "name": "sheriff"
+                        },
+                        "damageAmount": 303,
+                        "occurrenceCount": 4,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 303,
+                                "occurrenceCount": 4
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtSource-incendiary",
+                        "source": {
+                            "name": "incendiary"
+                        },
+                        "damageAmount": 2,
+                        "occurrenceCount": 2,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 2,
+                                "occurrenceCount": 2
+                            }
+                        ]
+                    }
+                ],
+                "damageDealtTargets": [
+                    {
+                        "id": "damageDealtTarget-body",
+                        "target": {
+                            "name": "body"
+                        },
+                        "damageAmount": 110,
+                        "occurrenceCount": 2,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 110,
+                                "occurrenceCount": 2
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtTarget-general",
+                        "target": {
+                            "name": "general"
+                        },
+                        "damageAmount": 2,
+                        "occurrenceCount": 2,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 2,
+                                "occurrenceCount": 2
+                            }
+                        ]
+                    },
+                    {
+                        "id": "damageDealtTarget-head",
+                        "target": {
+                            "name": "head"
+                        },
+                        "damageAmount": 193,
+                        "occurrenceCount": 2,
+                        "damageTypes": [
+                            {
+                                "id": "damageDealtType-enemyDamage",
+                                "type": "enemyDamage",
+                                "damageAmount": 193,
+                                "occurrenceCount": 2
+                            }
+                        ]
+                    }
+                ],
+                "players": [
+                    {
+                        "id": "32268",
+                        "statePath": [
+                            {
+                                "id": "32268"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "silentzz",
+                        "participationStatus": "active",
+                        "kills": 1,
+                        "killAssistsReceived": 2,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [
+                            {
+                                "id": "killAssistsReceivedFromPlayer-32032",
+                                "playerId": "32032",
+                                "killAssistsReceived": 1
+                            },
+                            {
+                                "id": "killAssistsReceivedFromPlayer-32033",
+                                "playerId": "32033",
+                                "killAssistsReceived": 1
+                            }
+                        ],
+                        "weaponKills": {
+                            "sheriff": 1
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-sheriff",
+                                "source": {
+                                    "name": "sheriff"
+                                },
+                                "damageAmount": 70,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 70,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-head",
+                                "target": {
+                                    "name": "head"
+                                },
+                                "damageAmount": 70,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 70,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 70,
+                        "damageTaken": 125,
+                        "headshots": 1,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "32032",
+                        "statePath": [
+                            {
+                                "id": "32032"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "spikeziN",
+                        "participationStatus": "active",
+                        "kills": 0,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 1,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {},
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [
+                            {
+                                "id": "captureUltimateOrb",
+                                "statePath": [
+                                    {
+                                        "id": "captureUltimateOrb"
+                                    }
+                                ],
+                                "type": "captureUltimateOrb",
+                                "completionCount": 1,
+                                "completedFirst": true
+                            }
+                        ],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-sheriff",
+                                "source": {
+                                    "name": "sheriff"
+                                },
+                                "damageAmount": 55,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 55,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 55,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 55,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 55,
+                        "damageTaken": 124,
+                        "headshots": 0,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "32033",
+                        "statePath": [
+                            {
+                                "id": "32033"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "Lz",
+                        "participationStatus": "active",
+                        "kills": 1,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 1,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {
+                            "sheriff": 1
+                        },
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [
+                            {
+                                "id": "plantBomb",
+                                "statePath": [
+                                    {
+                                        "id": "plantBomb"
+                                    }
+                                ],
+                                "type": "plantBomb",
+                                "completionCount": 1,
+                                "completedFirst": true
+                            }
+                        ],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-incendiary",
+                                "source": {
+                                    "name": "incendiary"
+                                },
+                                "damageAmount": 2,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 2,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtSource-sheriff",
+                                "source": {
+                                    "name": "sheriff"
+                                },
+                                "damageAmount": 123,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 123,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-general",
+                                "target": {
+                                    "name": "general"
+                                },
+                                "damageAmount": 2,
+                                "occurrenceCount": 2,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 2,
+                                        "occurrenceCount": 2
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "damageDealtTarget-head",
+                                "target": {
+                                    "name": "head"
+                                },
+                                "damageAmount": 123,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 123,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 125,
+                        "damageTaken": 125,
+                        "headshots": 1,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "3315",
+                        "statePath": [
+                            {
+                                "id": "3315"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "gobera",
+                        "participationStatus": "active",
+                        "kills": 0,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {},
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [],
+                        "damageDealtSources": [
+                            {
+                                "id": "damageDealtSource-sheriff",
+                                "source": {
+                                    "name": "sheriff"
+                                },
+                                "damageAmount": 55,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 55,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "damageDealtTargets": [
+                            {
+                                "id": "damageDealtTarget-body",
+                                "target": {
+                                    "name": "body"
+                                },
+                                "damageAmount": 55,
+                                "occurrenceCount": 1,
+                                "damageTypes": [
+                                    {
+                                        "id": "damageDealtType-enemyDamage",
+                                        "type": "enemyDamage",
+                                        "damageAmount": 55,
+                                        "occurrenceCount": 1
+                                    }
+                                ]
+                            }
+                        ],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 55,
+                        "damageTaken": 125,
+                        "headshots": 0,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    },
+                    {
+                        "id": "32030",
+                        "statePath": [
+                            {
+                                "id": "32030"
+                            }
+                        ],
+                        "segmentType": "round",
+                        "name": "pryze",
+                        "participationStatus": "active",
+                        "kills": 0,
+                        "killAssistsReceived": 0,
+                        "killAssistsGiven": 0,
+                        "killAssistsReceivedFromPlayer": [],
+                        "weaponKills": {},
+                        "teamkills": 0,
+                        "teamkillAssistsReceived": 0,
+                        "teamkillAssistsGiven": 0,
+                        "teamkillAssistsReceivedFromPlayer": [],
+                        "weaponTeamkills": {},
+                        "selfkills": 0,
+                        "deaths": 1,
+                        "firstKill": false,
+                        "objectives": [],
+                        "damageDealtSources": [],
+                        "damageDealtTargets": [],
+                        "alive": false,
+                        "currentArmor": 0,
+                        "currentHealth": 0,
+                        "damageDealt": 0,
+                        "damageTaken": 124,
+                        "headshots": 0,
+                        "maxHealth": 100,
+                        "selfdamageDealt": 0,
+                        "selfdamageTaken": 0,
+                        "teamHeadshots": 0,
+                        "teamdamageDealt": 0,
+                        "teamdamageTaken": 0
+                    }
+                ],
+                "damageDealt": 305,
+                "damageTaken": 623,
+                "headshots": 2,
+                "selfdamageDealt": 0,
+                "selfdamageTaken": 0,
+                "teamHeadshots": 0,
+                "teamdamageDealt": 0,
+                "teamdamageTaken": 0,
+                "winType": ""
+            }
+        ],
+        "segments": [
+            {
+                "id": "freezetime-1",
+                "statePath": [
+                    {
+                        "id": "freezetime-1"
+                    }
+                ],
+                "type": "freezetime",
+                "sequenceNumber": 1,
+                "started": true,
+                "finished": true,
+                "startedAt": "2025-08-08T21:12:25.283Z",
+                "teams": [],
+                "segments": [],
+                "draftActions": [],
+                "duration": "PT28.568S"
+            }
+        ],
+        "draftActions": [],
+        "duration": "PT2M7.641S"
+    }
+}

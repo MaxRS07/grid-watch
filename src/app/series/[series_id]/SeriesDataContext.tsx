@@ -41,12 +41,10 @@ export function SeriesDataProvider({
         setError(null);
 
         fetchSeriesById(seriesId).then((s) => {
-            console.log("series: ", s);
             setSeries(s);
         });
         fetchSeriesStats(seriesId)
             .then(async (statsData) => {
-                console.log('Fetched series stats data:', statsData);
                 setSeriesStats(statsData);
 
                 // Fetch full team objects for each team in the series

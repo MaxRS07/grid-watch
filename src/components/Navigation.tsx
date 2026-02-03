@@ -14,7 +14,6 @@ export default function Navigation() {
     { name: 'Players', href: '/players' },
     { name: 'Teams', href: '/teams' },
     { name: 'Matches', href: '/series' },
-    { name: 'Analytics', href: '/analytics' },
   ];
 
   const isActive = (href: string) => {
@@ -28,7 +27,6 @@ export default function Navigation() {
     <nav className="nav-header">
       <div className="nav-container">
         <Link href="/" className="nav-logo">
-          <div className="nav-logo-icon">GW</div>
           <span className="nav-logo-text">Grid Watch</span>
         </Link>
 

@@ -12,7 +12,6 @@ function TeamLayoutContent({ children }: { children: ReactNode }) {
     const { team, teamPlayers, teamStats, loading, timeWindow, setTimeWindow } = useTeamData();
 
     const isStatsActive = pathname?.includes('/stats');
-    const isAnalysisActive = pathname?.includes('/analysis');
     const isSeriesActive = pathname?.includes('/series');
 
     const timeWindowOptions = [
@@ -26,10 +25,6 @@ function TeamLayoutContent({ children }: { children: ReactNode }) {
 
     const navigateToStats = () => {
         router.push(`/team/${teamId}/stats`);
-    };
-
-    const navigateToAnalysis = () => {
-        router.push(`/team/${teamId}/analysis`);
     };
 
     const navigateToSeries = () => {
@@ -80,15 +75,6 @@ function TeamLayoutContent({ children }: { children: ReactNode }) {
                                     }`}
                             >
                                 Statistics
-                            </button>
-                            <button
-                                onClick={navigateToAnalysis}
-                                className={`pb-4 px-1 border-b-2 font-medium transition-colors ${isAnalysisActive
-                                    ? 'border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400'
-                                    : 'border-transparent text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700'
-                                    }`}
-                            >
-                                Analysis
                             </button>
                             <button
                                 onClick={navigateToSeries}

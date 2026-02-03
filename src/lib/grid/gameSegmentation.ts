@@ -18,8 +18,6 @@ export interface RoundSegment {
     startTime: number;
     endTime: number;
     roundEvents: FlatEvent[];
-    startData?: any;
-    endData?: any;
 }
 
 export interface GameSegment {
@@ -30,8 +28,6 @@ export interface GameSegment {
     endTime: number;
     rounds: RoundSegment[];
     gameEvents?: FlatEvent[]; // Events for games without rounds (e.g., LoL)
-    startData?: any;
-    endData?: any;
 }
 
 /**
@@ -71,9 +67,10 @@ export function extractGameSegments(events: FlatEvent[]): GameSegment[] {
             gameStartTime = event.ts;
             gameStartPos = position;
             currentGameRounds = [];
-            gameEvents = [];
+            gameEvents = [event];
             gameHasRounds = false;
         } else if (eventTypeLower === 'series-ended-game' && gameStartTime !== null && gameStartPos !== null) {
+            gameEvents.push(event);
             gameSegments.push({
                 winningTeam: getWinningTeam(event) ?? undefined,
                 startPos: gameStartPos,
@@ -81,9 +78,7 @@ export function extractGameSegments(events: FlatEvent[]): GameSegment[] {
                 startTime: gameStartTime,
                 endTime: event.ts,
                 rounds: currentGameRounds,
-                gameEvents: !gameHasRounds ? gameEvents : undefined,
-                startData: gameStartData,
-                endData: event.payload ?? undefined,
+                gameEvents: gameEvents,
             });
             gameStartTime = null;
             gameStartPos = null;
@@ -99,7 +94,9 @@ export function extractGameSegments(events: FlatEvent[]): GameSegment[] {
                 roundStartTime = event.ts;
                 roundStartPos = position;
                 roundStartData = event.payload ?? undefined;
+                roundEvents = [event]
             } else if (eventTypeLower === 'game-ended-round' && roundStartTime !== null && roundStartPos !== null) {
+                roundEvents.push(event);
                 currentGameRounds.push({
                     winningTeam: getWinningTeam(event) ?? undefined,
                     startPos: roundStartPos,
@@ -107,8 +104,6 @@ export function extractGameSegments(events: FlatEvent[]): GameSegment[] {
                     startTime: roundStartTime,
                     endTime: event.ts,
                     roundEvents,
-                    startData: roundStartData,
-                    endData: event.payload ?? undefined,
                 });
                 roundEvents = [];
                 roundStartTime = null;

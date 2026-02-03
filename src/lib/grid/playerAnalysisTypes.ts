@@ -61,56 +61,100 @@ export interface PlayerCombatEvent {
     } | null;
 }
 
+export interface RoundTrendData {
+    roundNumber: number;
+    gameNumber: number;
+    combatStats: PlayerRoundCombatStats;
+    alivePercent: number;
+}
+
+export interface GameTrendData {
+    gameNumber: number;
+    roundsPlayed: number;
+    totalKills: number;
+    totalDeaths: number;
+    totalDamageDealt: number;
+    totalDamageTaken: number;
+    avgKillsPerRound: number;
+    avgDeathsPerRound: number;
+    avgDamagePerRound: number;
+    winsInGame: number;
+    won: boolean;
+}
+
+export interface SeriesTrendData {
+    gamesPlayed: number;
+    totalKills: number;
+    totalDeaths: number;
+    totalDamageDealt: number;
+    totalDamageTaken: number;
+    avgKillsPerGame: number;
+    avgDeathsPerGame: number;
+    avgDamagePerGame: number;
+    gamesWon: number;
+    winRate: number;
+}
+
+export interface PositioningTrendData {
+    avgDistanceToTeammates: number;
+    attackerSideAggressionRate: number;
+    defenderSideHoldRate: number;
+    avgVelocity: { x: number; y: number };
+}
+
 export interface PlayerValorantAnalysis {
     playerId: string;
+    playerName: string;
     timeWindow: {
         start: number;
         end: number;
     };
 
-    volume: VolumeStats;
-    combat: CombatStats;
-    economy: EconomyStats;
-    positioning: PositioningStats;
-    clutch: ClutchStats;
-    consistency: ConsistencyStats;
-    teamImpact: TeamImpactStats;
-    context: ContextStats;
+    // Round-level trends
+    roundTrends: RoundTrendData[];
+
+    // Game-level trends
+    gameTrends: GameTrendData[];
+
+    // Series-level summary with trends
+    seriesTrends: SeriesTrendData;
+
+    // Positioning analysis
+    positioningTrends: PositioningTrendData;
+
+    // Trend analysis
+    trends: {
+        // Within a game: are they getting better or worse?
+        roundPerformanceTrend: 'improving' | 'declining' | 'stable';
+        roundPerformanceTrendValue: number; // correlation coefficient
+
+        // Within a series: game-to-game performance
+        gamePerformanceTrend: 'improving' | 'declining' | 'stable';
+        gamePerformanceTrendValue: number;
+
+        // Overall consistency
+        consistencyScore: number; // 0-1: how consistent is performance?
+
+        // Positioning trends
+        aggressionTrend: 'improving' | 'declining' | 'stable';
+        aggressionTrendValue: number;
+
+        defenseTrend: 'improving' | 'declining' | 'stable';
+        defenseTrendValue: number;
+
+        teamDistanceTrend: 'improving' | 'declining' | 'stable';
+        teamDistanceTrendValue: number;
+
+        velocityTrend: 'improving' | 'declining' | 'stable';
+        velocityTrendValue: number;
+    };
 }
 
-export interface VolumeStats {
-    seriesPlayed: number;
-    mapsPlayed: number;
-    roundsPlayed: number;
-
-    roundsPerMap: number;
-    eventsPerRound: number;
-}
 export interface NamedStat {
     name: string,
     value: number,
 }
-export interface CombatStats {
-    weaponKills: Record<string, number>; // weapon name -> kills
-    weaponDamage: Record<string, number>; // weapon name -> damage
-    deaths: number;
-    assists: number;
 
-    kdr: number;
-    adr: number;          // average damage per round
-    acs: number;
-
-    firstKills: number;
-    firstDeaths: number;
-    entrySuccessRate: number;
-
-    headshotPercentage: number;
-    multiKillRounds: {
-        twoK: number;
-        threeK: number;
-        fourPlus: number;
-    };
-}
 
 export interface PositioningStats {
     ts: number;
@@ -181,11 +225,13 @@ export enum SupportEvents {
     PlayerDroppedItem = "player-dropped-item",
     PlayerUsedAbility = "player-used-ability"
 };
-
+export enum Side {
+    Attacker = "attacker",
+    Defender = "defender"
+}
 export interface RoundStartData {
     ts: number;
-    attacker: string;
-    defender: string;
+    sides: Record<string, Side>;
     players: Record<string, RoundStartPlayer[]>;
     map: GameMap;
 }
@@ -271,4 +317,31 @@ export class Position {
     static zero(): Position {
         return new Position(0, 0);
     }
+}
+
+export interface PlayerRoundCombatStats {
+    playerId: string;
+    playerName: string;
+    teamId: string;
+    side: Side;
+    won: boolean;
+    kills: number;
+    deaths: number;
+    killAssistsGiven: number;
+    killAssistsReceived: number;
+    headshots: number;
+    weaponKills: Record<string, number>;
+    damageDealt: number;
+    damageTaken: number;
+    firstKill: boolean;
+    alive: boolean;
+    currentHealth: number;
+    currentArmor: number;
+    maxHealth: number;
+    objectives: Array<{
+        id: string;
+        type: string;
+        completionCount: number;
+        completedFirst: boolean;
+    }>;
 }

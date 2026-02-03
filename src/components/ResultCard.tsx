@@ -17,8 +17,6 @@ export default function ResultCard({ id, name, title, team, onClick }: ResultCar
     .toUpperCase()
     .slice(0, 2);
 
-  console.log('Team in ResultCard:', team);
-
   const avatarStyle = team?.colorPrimary
     ? {
       background: `linear-gradient(135deg, ${team.colorPrimary} 0%, ${team.colorSecondary || team.colorPrimary} 100%)`

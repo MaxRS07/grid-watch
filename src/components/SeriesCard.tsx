@@ -6,6 +6,7 @@ interface SeriesCardProps {
   tournament: string;
   startTime: string;
   format: string;
+  year?: number;
   teams: {
     id: string;
     name: string;
@@ -23,6 +24,7 @@ export default function SeriesCard({
   tournament,
   startTime,
   format,
+  year,
   teams,
   onClick
 }: SeriesCardProps) {
@@ -72,11 +74,11 @@ export default function SeriesCard({
       className="relative overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 transition-all duration-200 cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-lg"
       onClick={() => onClick?.(id)}
     >
-      {/* Tournament Badge */}
+      {/* Title Badge */}
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold">
-            {tournament}
+            {title}
           </div>
           {format && (
             <div className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded text-xs">
@@ -93,8 +95,8 @@ export default function SeriesCard({
 
       {/* Match Title */}
       {title && (
-        <div className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
-          {title.toUpperCase()} {tournament}
+        <div className="ml-1 mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+          {tournament}
         </div>
       )}
 
@@ -184,7 +186,7 @@ export default function SeriesCard({
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span>{dateStr}</span>
+          <span>{dateStr} {year && `${year}`}</span>
         </div>
         <div className="flex items-center gap-1">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

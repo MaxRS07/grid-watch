@@ -6,6 +6,8 @@ import SearchBar from '@/components/SearchBar';
 import ResultCard from '@/components/ResultCard';
 import { Player } from '@/data/allData';
 import { fetchPlayers, searchPlayersByNickname } from '@/lib/grid/players';
+import { isCacheInitialized, getAllCachedSeriesIds } from '@/lib/series-cache';
+import { filterSeriesByPlayer } from '@/lib/series-player-lookup';
 
 export default function PlayersPage() {
   const router = useRouter();
@@ -16,13 +18,31 @@ export default function PlayersPage() {
   const [hasNextPage, setHasNextPage] = useState(false);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [cacheInitialized, setCacheInitialized] = useState(false);
+  const [cachedSeriesIds, setCachedSeriesIds] = useState<Set<string>>(new Set());
 
   // Fetch players from API
   useEffect(() => {
+    const cacheReady = isCacheInitialized();
+    setCacheInitialized(cacheReady);
+
+    if (cacheReady) {
+      setCachedSeriesIds(new Set(getAllCachedSeriesIds()));
+    }
+
     fetchPlayers(48)
       .then((response) => {
-        setAllPlayers(response.data);
-        setFilteredPlayers(response.data); // initially show all players
+        let playersToUse = response.data;
+
+        // Filter to only players with series participation if cache is ready
+        if (cacheReady && cachedSeriesIds.size > 0) {
+          playersToUse = response.data.filter((player) =>
+            cachedSeriesIds.has(player.id)
+          );
+        }
+
+        setAllPlayers(response.data); // Keep all for load more
+        setFilteredPlayers(playersToUse);
         setHasNextPage(response.pageInfo.hasNextPage);
         setNextCursor(response.pageInfo.endCursor);
       })
@@ -39,8 +59,15 @@ export default function PlayersPage() {
     setIsLoadingMore(true);
     try {
       const response = await fetchPlayers(48, nextCursor);
+      let newPlayers = response.data;
+
+      // Apply cache filter if initialized
+      if (cacheInitialized && cachedSeriesIds.size > 0) {
+        newPlayers = newPlayers.filter(p => cachedSeriesIds.has(p.id));
+      }
+
       setAllPlayers((prev) => [...prev, ...response.data]);
-      setFilteredPlayers((prev) => [...prev, ...response.data]);
+      setFilteredPlayers((prev) => [...prev, ...newPlayers]);
       setHasNextPage(response.pageInfo.hasNextPage);
       setNextCursor(response.pageInfo.endCursor);
     } catch (error) {
@@ -56,12 +83,18 @@ export default function PlayersPage() {
     const lowerQuery = query.toLowerCase();
 
     if (!query.trim()) {
-      // If search is empty, show all players
-      const filtered = allPlayers.filter((player) => {
+      // If search is empty, show all players (filtered by cache if initialized)
+      let filtered = allPlayers.filter((player) => {
         const matchesFilter =
           filter === 'all' || player.name.toLowerCase() === filter.toLowerCase();
         return matchesFilter;
       });
+
+      // Apply cache filter if initialized
+      if (cacheInitialized && cachedSeriesIds.size > 0) {
+        filtered = filtered.filter(p => cachedSeriesIds.has(p.id));
+      }
+
       setFilteredPlayers(filtered);
       return;
     }
@@ -69,7 +102,12 @@ export default function PlayersPage() {
     try {
       // Search via API
       const response = await searchPlayersByNickname(query, 48);
-      const searchedPlayers = response.data;
+      let searchedPlayers = response.data;
+
+      // Apply cache filter if initialized
+      if (cacheInitialized && cachedSeriesIds.size > 0) {
+        searchedPlayers = searchedPlayers.filter(p => cachedSeriesIds.has(p.id));
+      }
 
       // Apply title filter if needed
       const filtered = searchedPlayers.filter((player) => {
@@ -82,12 +120,18 @@ export default function PlayersPage() {
     } catch (error) {
       console.error('Error searching players:', error);
       // Fallback to client-side filtering
-      const filtered = allPlayers.filter((player) => {
+      let filtered = allPlayers.filter((player) => {
         const matchesQuery = player.name.toLowerCase().includes(lowerQuery);
         const matchesFilter =
           filter === 'all' || player.name.toLowerCase() === filter.toLowerCase();
         return matchesQuery && matchesFilter;
       });
+
+      // Apply cache filter if initialized
+      if (cacheInitialized && cachedSeriesIds.size > 0) {
+        filtered = filtered.filter(p => cachedSeriesIds.has(p.id));
+      }
+
       setFilteredPlayers(filtered);
     }
   };

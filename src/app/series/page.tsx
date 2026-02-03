@@ -14,10 +14,15 @@ export default function SeriesPage() {
     const [teamMap, setTeamMap] = useState<Record<string, Team>>({}); // Store fetched teams
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
+    const [afterCursor, setAfterCursor] = useState<string | null>(null);
+    const [pageInfo, setPageInfo] = useState({ hasNextPage: false, endCursor: null as string | null });
+    const pageSize = 20;
+
+    const defaultEnd = Date.now() + 7 * 24 * 60 * 60 * 1000;
 
     const [filters, setFilters] = useState<FilterOption[]>([
         { id: 'startDate', label: 'Start Date', type: 'date', value: Date.now() },
-        { id: 'endDate', label: 'End Date', type: 'date', value: Date.now() + 7 * 24 * 60 * 60 * 1000 },
+        { id: 'endDate', label: 'End Date', type: 'date', value: defaultEnd },
         { id: 'teamId', label: 'Team', type: 'text', value: '', placeholder: 'Team ID' },
         { id: 'titleId', label: 'Title', type: 'text', value: '', placeholder: 'Title ID' },
         { id: 'playerId', label: 'Player', type: 'text', value: '', placeholder: 'Player ID' },
@@ -71,11 +76,16 @@ export default function SeriesPage() {
             seriesFilters.live = liveFilter.value === 'true';
         }
 
+        // Add pagination
+        seriesFilters.first = pageSize;
+        seriesFilters.after = afterCursor;
+
         fetchSeriesWithFilters(seriesFilters)
-            .then(async (series) => {
-                console.log('Fetched series:', series);
+            .then(async (seriesData) => {
+                const series = seriesData.data || [];
                 setAllSeries(series);
                 setFilteredSeries(series);
+                setPageInfo(seriesData.pageInfo);
 
                 // Fetch team data for all teams in the series
                 const teamIds = new Set<string>();
@@ -103,7 +113,7 @@ export default function SeriesPage() {
                 console.error('Error fetching series:', err);
             })
             .finally(() => setLoading(false));
-    }, [filters]);
+    }, [filters, afterCursor]);
 
     // Apply all filters whenever search query or filter values change
     useEffect(() => {
@@ -117,7 +127,7 @@ export default function SeriesPage() {
         if (searchQuery) {
             const lowerQuery = searchQuery.toLowerCase();
             filtered = filtered.filter((series) => {
-                const titleMatch = series.name?.toLowerCase().includes(lowerQuery);
+                const titleMatch = series.tournamentName?.toLowerCase().includes(lowerQuery);
                 const tournamentMatch = series.tournamentName?.toLowerCase().includes(lowerQuery);
                 const teamMatch = series.teams?.some(team =>
                     team.baseInfo?.name?.toLowerCase().includes(lowerQuery)
@@ -163,8 +173,18 @@ export default function SeriesPage() {
 
     const handleResetFilters = () => {
         setSearchQuery('');
+        setAfterCursor(null);
+        setPageInfo({ hasNextPage: false, endCursor: null });
         setFilters((prev) =>
-            prev.map((f) => ({ ...f, value: '' }))
+            prev.map((f) => {
+                if (f.id === 'startDate') {
+                    return { ...f, value: Date.now() };
+                } else if (f.id === 'endDate') {
+                    return { ...f, value: defaultEnd };
+                } else {
+                    return { ...f, value: '' };
+                }
+            })
         );
     };
 
@@ -203,29 +223,59 @@ export default function SeriesPage() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-6 mt-6">
-                        {filteredSeries.map((series) => (
-                            <SeriesCard
-                                key={series.id}
-                                id={series.id}
-                                title={series.name || ''}
-                                tournament={series.tournamentName || 'Unknown Tournament'}
-                                startTime={series.startTimeScheduled}
-                                format={series.format?.nameShortened || series.format?.name || ''}
-                                teams={series.teams?.map(t => {
-                                    const teamId = t.baseInfo?.id || '';
-                                    const teamData = teamMap[teamId];
-                                    return {
-                                        id: teamId,
-                                        name: t.baseInfo?.name || 'TBD',
-                                        scoreAdvantage: t.scoreAdvantage || 0,
-                                        colorPrimary: teamData?.colorPrimary,
-                                        colorSecondary: teamData?.colorSecondary,
-                                        logoUrl: teamData?.logoUrl
-                                    };
-                                }) || []}
-                                onClick={handleRouting}
-                            />
-                        ))}
+                        {filteredSeries.map((series) => {
+                            const seriesYear = new Date(series.startTimeScheduled).getFullYear();
+                            return (
+                                <SeriesCard
+                                    key={series.id}
+                                    id={series.id}
+                                    title={series.title?.name || series.tournamentName || 'Unknown Series'}
+                                    tournament={series.tournamentName || 'Unknown Tournament'}
+                                    startTime={series.startTimeScheduled}
+                                    format={series.format?.nameShortened || series.format?.name || ''}
+                                    year={seriesYear}
+                                    teams={series.teams?.map(t => {
+                                        const teamId = t.baseInfo?.id || '';
+                                        const teamData = teamMap[teamId];
+                                        return {
+                                            id: teamId,
+                                            name: t.baseInfo?.name || 'TBD',
+                                            scoreAdvantage: t.scoreAdvantage || 0,
+                                            colorPrimary: teamData?.colorPrimary,
+                                            colorSecondary: teamData?.colorSecondary,
+                                            logoUrl: teamData?.logoUrl
+                                        };
+                                    }) || []}
+                                    onClick={handleRouting}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
+
+                {/* Pagination Controls */}
+                {filteredSeries.length > 0 && (
+                    <div
+                        className="mt-8 flex items-center justify-between"
+                        style={{ paddingInline: "10%" }}
+                    >
+                        <button
+                            onClick={() => setAfterCursor(null)}
+                            disabled={!afterCursor}
+                            className="px-3 py-2 rounded-lg border border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                        >
+                            First
+                        </button>
+                        <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                            {filteredSeries.length} results
+                        </span>
+                        <button
+                            onClick={() => setAfterCursor(pageInfo.endCursor)}
+                            disabled={!pageInfo.hasNextPage || !pageInfo.endCursor}
+                            className="px-3 py-2 rounded-lg border border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                        >
+                            Next
+                        </button>
                     </div>
                 )}
             </div>

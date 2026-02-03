@@ -5,7 +5,8 @@ import './SearchBar.css';
 
 interface SearchResult {
   id: string;
-  name: string;
+  name?: string;
+  getName?: () => string;
 }
 
 export interface FilterOption {
@@ -126,14 +127,14 @@ export default function SearchBar({
                   key={result.id}
                   className="search-dropdown-item"
                   onClick={() => {
-                    setQuery(result.name);
+                    setQuery(result.name || result.getName?.() || '');
                     onSelect?.(result);
                     setShowDropdown(false);
                   }}
                 >
-                  <div className="search-dropdown-avatar">{getInitials(result.name)}</div>
+                  <div className="search-dropdown-avatar">{getInitials(result.name || result.getName?.() || '')}</div>
                   <div className="search-dropdown-info">
-                    <div className="search-dropdown-name">{result.name}</div>
+                    <div className="search-dropdown-name">{result.name || result.getName?.() || ''}</div>
                   </div>
                 </div>
               ))}

@@ -50,7 +50,7 @@ export type Tournament = {
   nameShortened: string;
 };
 
-export interface Series {
+export interface SeriesData {
   title: {
     id: string;
     name: string
@@ -72,6 +72,45 @@ export interface Series {
     };
     scoreAdvantage: number;
   }[];
+}
+
+export class Series implements SeriesData {
+  title: {
+    id: string;
+    name: string
+    nameShortened: string;
+  }
+  id: string;
+  tournamentName: string;
+  startTimeScheduled: string;
+  format: {
+    name: string;
+    nameShortened: string;
+  };
+  players: string[];
+  streams: string[];
+  teams: {
+    baseInfo: {
+      id: string;
+      name: string;
+    };
+    scoreAdvantage: number;
+  }[];
+
+  constructor(data: SeriesData) {
+    this.title = data.title;
+    this.id = data.id;
+    this.tournamentName = data.tournamentName;
+    this.startTimeScheduled = data.startTimeScheduled;
+    this.format = data.format;
+    this.players = data.players;
+    this.streams = data.streams;
+    this.teams = data.teams;
+  }
+
+  getName(): string {
+    return this.tournamentName + ' - ' + this.title.name;
+  }
 }
 const headers = {
   'Accept': 'application/json',
